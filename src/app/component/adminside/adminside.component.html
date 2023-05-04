@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<mat-divider></mat-divider>
+<app-carousel></app-carousel>
+<mat-divider></mat-divider>
+<div *ngIf="!uploaded" >
+    <h1><b> Could You Please Upload The Required Skills In PDF File : </b></h1>
+    <h2 class="fileexample"><b>Please upload such one in this structure to help our AI model working correctly ! </b></h2>
+    <embed src="assets/myfile.pdf" type="application/pdf" width="100%" backgroundColor="#ffffff" height="600px">
+    <h2 *ngIf="!isFileDocument" style="text-align: center;"><b>Drag and Drop your PDF file :</b></h2>
+    <div for="file-input" class="file-container" *ngIf="!isFileDocument">
+        <p class="centered-text"><b>Choose a file :</b></p>
+        <input type="file" id="file-input" (change)="onfilterFileSelected($event)" class="file" />
+    </div>
+    <div *ngIf="isFileDocument">
+        <h1><b> Choose the option you need </b></h1>
+        File name : {{selectedFile.name}} <br/>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <button class="new" (click)="resetSelectedfilterFile()">New File</button>
+                </div>
+                <div class="col-sm">
+                    <button class="upload" (click)="uploadfilterfile()" [disabled]="!selectedFile">Upload File</button>
+                    <button class="upload" (click)="onfilterFileSelected($event)" *ngIf="clicked">Upload File</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <mat-divider style="margin: 20px 0 20px 0;"></mat-divider> 
+    <div class="file-preview-container" *ngIf="selectedFile">
+        <ngx-extended-pdf-viewer  [src]="selectedFile" backgroundColor="#ffffff" [height]="'90vh'" 
+    [useBrowserLocale]="true" [handTool]="false" [showHandToolButton]="true">
+    </ngx-extended-pdf-viewer>
+    </div>
+</div>
+<div *ngIf="uploaded">
+    <h1><b> Here is where You can check wich Curriculum Vitae Matched Better With Your Needs  </b></h1>
+    <!-- <embed src="assets/myfile.pdf" type="application/pdf" width="100%" backgroundColor="#ffffff" height="600px"> -->
+</div>
+
+

@@ -1,0 +1,19 @@
+.navbar {
+    padding: 10px 0px 10px 20px ;
+    margin : 5px 5px 5px 5px ;
+    text-decoration: none;
+    font-family: 'poppins';
+    background-size: cover;
+    align-items: center;
+}
+.nav{
+    align-items: center; 
+}
+ul li {
+    list-style: none;
+    padding: 10px 20px 10px 0px;
+    margin : 0;
+}
+.navbar-brand .container-fluid ul {
+    display: flex;
+}

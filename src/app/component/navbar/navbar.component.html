@@ -1,0 +1,43 @@
+<nav style ="background-image: url('assets/images/navbar.jpg');" 
+class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" style="font-size: auto;"><b>curriculum vitae classifier</b></a>
+  <div class="container-fluid" fxFlex fxLayout="row" fxLayoutAlign="flex-end" >
+    <ul class="navbar-nav">
+      <!-- Avatar -->
+      <li *ngIf="!isUserSide" mdbDropdown class="nav-item dropdown" [mat-menu-trigger-for]="menu0">
+        <a
+          class="nav-link dropdown-toggle d-flex align-items-center"
+          id="navbarDropdownMenuLink"
+          role="button"
+          mdbDropdownToggle
+          aria-expanded="false"
+        >
+          <img
+            src="https://mdbootstrap.com/img/Photos/Avatars/img (31).webp"
+            class="rounded-circle"
+            height="22"
+            alt=""
+            loading="lazy"
+          />
+        </a>
+          <mat-menu #menu0="matMenu">
+            <li>
+              <button mat-menu-item>
+                <mat-icon>password</mat-icon>
+                Change Password 
+              </button>
+            </li>
+          <li>
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              Sign Out
+            </button>
+          </li>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+  
+    
+  </nav>
+

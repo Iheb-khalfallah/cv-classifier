@@ -1,0 +1,55 @@
+<app-navbar [isUserSide]="isUserSide"></app-navbar>
+<mat-divider></mat-divider>
+<app-carousel></app-carousel>
+<mat-divider></mat-divider>
+<div *ngIf="!uploaded">
+    <h1><b>Here where you can parse your resume</b></h1>
+    <h2 *ngIf="!isFileDocument" style="text-align: center;"><b>Drag and Drop your PDF file :</b></h2>
+    <div for="file-input" class="file-container" *ngIf="!isFileDocument">
+        <p class="centered-text"><b>Choose a file :</b></p>
+        <input type="file" id="file-input" (change)="onFileSelected($event)" class="file" />
+    </div>
+    <div *ngIf="isFileDocument">
+        File name : {{selectedFile.name}} <br/>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <button class="new" (click)="resetSelectedFile()">New File</button>
+                </div>
+                <div class="col-sm">
+                    <button class="upload" (click)="uploadfile()" [disabled]="!selectedFile">Upload File</button>
+                    <button class="upload" (click)="onFileSelected($event)" *ngIf="clicked">Upload File</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-divider style="margin: 20px 0 20px 0;"></mat-divider>
+    <div class="file-preview-container">
+        <ngx-extended-pdf-viewer [base64Src]="selectedFileB64" backgroundColor="#ffffff" [height]="'90vh'"
+        [useBrowserLocale]="true" [handTool]="false" [showHandToolButton]="true" *ngIf="isFileDocument" >
+        </ngx-extended-pdf-viewer>
+    </div>
+    <mat-divider style="margin-top: 20px;" *ngIf="isFileDocument"></mat-divider>
+</div>
+<div *ngIf="uploaded">
+    <h1 *ngIf="isFileDocument"><b>Some Other Skills Recommended For This Job </b></h1>
+    <ol>
+        <li>Our Company is looking for : </li>
+        <ul>
+            <li>
+                <!-- on va mettre ici les prérequis de notre entreprise qui sont déja inclus dans le pdf entrer par l'admin dés le départ du lancement de recrutement -->
+            </li>
+        </ul>
+        <li>May be you have missing those following skills :  </li>
+        <ul>
+            <li>
+                <!-- on va mettre ici les compétences manquées pour le pdfupladed par le user -->
+            </li>
+        </ul>
+    </ol>
+    <mat-divider style="margin-top: 20px;"></mat-divider>
+</div>
+<br>
+<br>
+<br>
